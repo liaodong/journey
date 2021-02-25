@@ -1,0 +1,11 @@
+做一个二分法的练习，开始采用softmax激活函数，训练结果成功。
+后改成用sigmoid函数，训练时准确率一直停留在50%, 无变化。
+根据https://www.cnblogs.com/nxf-rabbit75/p/9963208.html看到
+train_generator = train_datagen.flow_from_directory(
+    train_dir,
+    target_size = (150,150),
+    batch_size = 20,
+    class_mode = 'binary'  #因为使用了binary_crossentropy损失，所以需要用二进制标签
+)
+修改了class_mode后，问题解决。
+特此记录
