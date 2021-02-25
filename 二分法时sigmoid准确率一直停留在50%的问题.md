@@ -5,15 +5,13 @@ train_generator = train_datagen.flow_from_directory(
     train_dir,
     target_size = (150,150),
     batch_size = 20,
-    class_mode = 'binary'  ### 因为使用了binary_crossentropy损失，所以需要用二进制标签
+    class_mode = 'binary'  **因为使用了binary_crossentropy损失，所以需要用二进制标签**
 )
 修改了class_mode后，问题解决。
 特此记录
 
-
-将代码贴在下面吧
 ----------------------------------------------------------------------
-\#将图像复制到训练、验证和测试的目录
+#将图像复制到训练、验证和测试的目录
 
 import os,shutil
 
