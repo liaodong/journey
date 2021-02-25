@@ -5,7 +5,7 @@ train_generator = train_datagen.flow_from_directory(
     train_dir,
     target_size = (150,150),
     batch_size = 20,
-    class_mode = 'binary'  ** #因为使用了binary_crossentropy损失，所以需要用二进制标签 **
+    class_mode = 'binary'  ### 因为使用了binary_crossentropy损失，所以需要用二进制标签
 )
 修改了class_mode后，问题解决。
 特此记录
@@ -13,7 +13,7 @@ train_generator = train_datagen.flow_from_directory(
 
 将代码贴在下面吧
 ----------------------------------------------------------------------
-# 将图像复制到训练、验证和测试的目录
+\#将图像复制到训练、验证和测试的目录
 
 import os,shutil
 
@@ -28,19 +28,19 @@ os.mkdir(validation_dir)
 test_dir = os.path.join(base_dir,'test')
 os.mkdir(test_dir)
 
-#猫、狗的训练图像目录
+\#猫、狗的训练图像目录
 train_cats_dir = os.path.join(train_dir,'cats')
 os.mkdir(train_cats_dir)
 train_dogs_dir = os.path.join(train_dir,'dogs')
 os.mkdir(train_dogs_dir)
 
-#猫、狗的验证图像目录
+\#猫、狗的验证图像目录
 validation_cats_dir = os.path.join(validation_dir,'cats')
 os.mkdir(validation_cats_dir)
 validation_dogs_dir = os.path.join(validation_dir,'dogs')
 os.mkdir(validation_dogs_dir)
 
-#猫、狗的测试图像目录
+\#猫、狗的测试图像目录
 test_cats_dir = os.path.join(test_dir,'cats')
 os.mkdir(test_cats_dir)
 test_dogs_dir = os.path.join(test_dir,'dogs')
