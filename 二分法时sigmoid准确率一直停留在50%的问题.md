@@ -1,3 +1,4 @@
+## Tensorflow 学习记录
 做一个二分法的练习，开始采用softmax激活函数，训练结果成功。  
 后改成用sigmoid函数，训练时准确率一直停留在50%, 无变化。  
 根据https://www.cnblogs.com/nxf-rabbit75/p/9963208.html看到   
@@ -10,7 +11,8 @@ train_generator = train_datagen.flow_from_directory(
 修改了class_mode后，问题解决。   
 特此记录     
 
-----------------------------------------------------------------------
+---
+```
 #将图像复制到训练、验证和测试的目录
 
 import os,shutil
@@ -205,4 +207,4 @@ plt.title('Traing and validation loss')
 plt.legend()
 
 plt.show()
-------------------------------------------------------------------------
+```
