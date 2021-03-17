@@ -3,6 +3,40 @@ import os
 import subprocess
 import platform
 import time
+from enum import Enum
+
+
+class KEYS(Enum):
+    #关于键值宏的定义在 KeyEvent.java文件中有定义
+    KEYCODE_HOME = 3
+    KEYCODE_BACK = 4
+    KEYCODE_CALL = 5
+    KEYCODE_ENDCALL = 6
+    KEYCODE_0 = 7
+    KEYCODE_1 = 8
+    KEYCODE_2 = 9
+    KEYCODE_3 = 10
+    KEYCODE_4 = 11
+    KEYCODE_5 = 12
+    KEYCODE_6 = 13
+    KEYCODE_7 = 14
+    KEYCODE_8 = 15
+    KEYCODE_9 = 16
+    KEYCODE_STAR = 17
+    KEYCODE_POUND = 18
+    KEYCODE_DPAD_UP = 19
+    KEYCODE_DPAD_DOWN = 20
+    KEYCODE_DPAD_LEFT = 21
+    KEYCODE_DPAD_RIGHT = 22
+    KEYCODE_DPAD_CENTER = 23
+
+    KEYCODE_VOLUME_UP = 24
+    KEYCODE_VOLUME_DOWN = 25
+    KEYCODE_POWER = 26
+
+    KEYCODE_CAMERA = 27
+    KEYCODE_CLEAR = 28
+
 
 
 class auto_adb():
@@ -98,10 +132,33 @@ class auto_adb():
             time.sleep(1)
         pass
 
+    def auto_input_text(self, text):
+        self.run('shell input text '+ text)
+
+    def auto_keypress(self, key):
+        self.run('shell input keyevent ' + str(key))
+
+    def auto_tap(self,x, y):
+        self.run('shell input tap {} {}'.format(x, y))
+
+    def auto_swipe(self, x1, y1, x2, y2, duration):
+        self.run('shell input swipe {} {} {} {} {}'.format(x1, y1, x2, y2, duration))
+
 
 if __name__ == '__main__':
     adb = auto_adb()
     # adb.capture_pic(r'/home/ai/temp/scr.png')
     # print(adb.run('shell pm list package| grep ziyatech'))
-    adb.wait_adb_connected()
+    # adb.wait_adb_connected()
+    # adb.auto_tap(1000,1200)
+    adb.auto_keypress(KEYS.KEYCODE_POWER.value)
+    time.sleep(1)
+    adb.auto_swipe(300,1000, 100, 300, 1000)
+    time.sleep(1)
+    adb.auto_keypress(KEYS.KEYCODE_1.value)
+    adb.auto_keypress(KEYS.KEYCODE_2.value)
+    adb.auto_keypress(KEYS.KEYCODE_2.value)
+    adb.auto_keypress(KEYS.KEYCODE_1.value)
     pass
+
+
