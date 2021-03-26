@@ -17,7 +17,7 @@ df.sample(frac=1)
 `
 df.sample(frac=1).reset_index(drop=True)
 `
--------------------------------------------------------
+---
 其实，sklearn(机器学习的库）中也有shuffle的方法。
 
 `
