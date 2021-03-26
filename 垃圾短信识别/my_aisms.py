@@ -11,6 +11,20 @@ model_path = "bert-base-chinese"
 def create_model():
     vocab_size = 38000
     model = keras.Sequential()
+    '''
+    对文本数据进行平均池化操作
+    输入得数据格式为：(batch_size, steps, features)
+    batch_size表示本批次有多少条文本
+    steps表示一个文本里面有是多少个单词
+    features表示一个单词使用多少维度进行表示
+
+    输出得数据格式为：(batch_size, features)
+    features表示一行文本使用多少个维度进行表示
+
+    所以从上面得输入和输出可以看出。steps这个维度不见了，
+    所以这允许模型以尽可能最简单的方式处理可变长度的输入
+    原文链接：https://blog.csdn.net/weixin_43824178/article/details/99182766
+    '''
     model.add(keras.layers.Embedding(vocab_size, 16))
     model.add(keras.layers.GlobalAveragePooling1D())
     model.add(keras.layers.Dense(128, activation=tf.nn.relu))
